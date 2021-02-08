@@ -1,6 +1,5 @@
 package de.oschlies.model;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,6 @@
 package de.oschlies.service.file;
 
 import de.oschlies.model.Microservice;
-import java.util.LinkedList;
 import java.util.List;
 
 public interface FileReader {

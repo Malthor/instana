@@ -7,11 +7,12 @@ import de.oschlies.model.Microservice;
 import java.util.LinkedList;
 import java.util.List;
 
-public class RouteLatencyCalculatorImpl implements RouteLatencyCalculator{
+public class RouteLatencyCalculatorImpl implements RouteLatencyCalculator {
+
   private final List<Microservice> microservices;
 
   @Inject
-  public RouteLatencyCalculatorImpl(@Assisted List<Microservice> microservices){
+  public RouteLatencyCalculatorImpl(@Assisted List<Microservice> microservices) {
     this.microservices = microservices;
   }
 

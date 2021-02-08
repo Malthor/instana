@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -26,10 +25,10 @@ public class FileReaderImpl implements FileReader {
       scanner.useDelimiter(",");
       while (scanner.hasNext()) {
         Microservice microservice = createMicroservice(scanner.next());
-        if(microserviceMap.containsKey(microservice.getName())){
+        if (microserviceMap.containsKey(microservice.getName())) {
           var alreadyUserMicro = microserviceMap.get(microservice.getName());
           alreadyUserMicro.getConnections().addAll(microservice.getConnections());
-        }else{
+        } else {
           microserviceMap.put(microservice.getName(), microservice);
         }
       }
@@ -47,7 +46,7 @@ public class FileReaderImpl implements FileReader {
       microservice = new Microservice();
       microservice.setName(trimmed.substring(0, 1));
       Connection connection = new Connection();
-      connection.setEndpoint(trimmed.substring(1,2));
+      connection.setEndpoint(trimmed.substring(1, 2));
       connection.setLatency(Integer.parseInt(trimmed.substring(2)));
       microservice.getConnections().add(connection);
     } else {

@@ -9,7 +9,6 @@ import de.oschlies.service.tracing.hops.TraceHopsExactFactory;
 import de.oschlies.service.tracing.hops.TraceHopsMaxFactory;
 import de.oschlies.service.tracing.latency.TraceMaxLatency;
 import de.oschlies.service.tracing.latency.TraceMaxLatencyFactory;
-import de.oschlies.service.tracing.latency.TraceMaxLatencyImpl;
 import de.oschlies.service.tracing.path.ShortestPath;
 import de.oschlies.service.tracing.path.ShortestPathFactory;
 import de.oschlies.service.tracing.route.RouteLatencyCalculator;
@@ -38,14 +37,13 @@ public class TraceBuilderImpl implements TraceBuilder {
   @Inject
   private TraceMaxLatencyFactory traceMaxLatencyFactory;
 
-  private List<Microservice> microservices;
   private RouteLatencyCalculator calculator;
 
 
   @Override
   public void createTrace(String[] args) {
     String fileLocation = commandLineReader.readFileLocation(args);
-    this.microservices = fileReader.readTraceInputs(fileLocation);
+    List<Microservice> microservices = fileReader.readTraceInputs(fileLocation);
     this.calculator = routeLatencyFactory.create(microservices);
     System.out.println("1. " + getABC());
     System.out.println("2. " + getAD());
