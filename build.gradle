@@ -1,0 +1,41 @@
+plugins {
+    id 'groovy'
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+    id 'application'
+}
+
+group 'de.oschlies'
+version '1.0.0'
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+mainClassName = 'de.oschlies.main.Application'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+dependencies {
+    implementation 'commons-cli:commons-cli:1.4'
+    implementation 'com.google.inject:guice:4.0'
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    testImplementation 'org.codehaus.groovy:groovy:3.0.6'
+    testImplementation 'org.spockframework:spock-core:2.0-M4-groovy-3.0'
+    testImplementation 'org.spockframework:spock-spring:2.0-M4-groovy-3.0'
+}
+
+shadowJar {
+    archiveBaseName.set('tracer')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+}
+
+test {
+    useJUnitPlatform()
+}
