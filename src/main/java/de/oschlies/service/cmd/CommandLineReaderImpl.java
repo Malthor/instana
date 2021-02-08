@@ -16,6 +16,7 @@ public class CommandLineReaderImpl implements CommandLineReader{
     Option logfile = Option.builder()
         .longOpt("file")
         .argName("file" )
+        .required()
         .hasArg()
         .desc("Graph input file" )
         .build();
