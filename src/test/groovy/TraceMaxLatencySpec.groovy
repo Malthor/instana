@@ -1,7 +1,7 @@
 import de.oschlies.model.Connection
 import de.oschlies.model.Microservice
-import de.oschlies.service.tracing.TraceMaxLatency
-import de.oschlies.service.tracing.TraceMaxLatencyImpl
+import de.oschlies.service.tracing.latency.TraceMaxLatency
+import de.oschlies.service.tracing.latency.TraceMaxLatencyImpl
 import spock.lang.Specification
 
 class TraceMaxLatencySpec extends Specification{

@@ -1,8 +1,8 @@
 import de.oschlies.model.Connection
 import de.oschlies.model.Microservice
-import de.oschlies.service.tracing.TraceHops
-import de.oschlies.service.tracing.TraceHopsExact
-import de.oschlies.service.tracing.TraceHopsMax
+import de.oschlies.service.tracing.hops.TraceHops
+import de.oschlies.service.tracing.hops.TraceHopsExact
+import de.oschlies.service.tracing.hops.TraceHopsMax
 import spock.lang.Specification
 
 class TraceHopsSpec extends Specification{

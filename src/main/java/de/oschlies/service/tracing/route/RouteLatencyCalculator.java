@@ -1,4 +1,4 @@
-package de.oschlies.service.tracing;
+package de.oschlies.service.tracing.route;
 
 import java.util.LinkedList;
 

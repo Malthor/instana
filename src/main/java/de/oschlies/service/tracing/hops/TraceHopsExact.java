@@ -1,13 +1,17 @@
-package de.oschlies.service.tracing;
+package de.oschlies.service.tracing.hops;
 
+import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
 import de.oschlies.model.Connection;
 import de.oschlies.model.Microservice;
 import java.util.List;
 
-public class TraceHopsExact implements TraceHops{
-  private List<Microservice> microservices;
+public class TraceHopsExact implements TraceHops {
 
-  public TraceHopsExact(List<Microservice> microservices){
+  private final List<Microservice> microservices;
+
+  @Inject
+  public TraceHopsExact(@Assisted List<Microservice> microservices) {
     this.microservices = microservices;
   }
 
@@ -17,13 +21,15 @@ public class TraceHopsExact implements TraceHops{
     int iterations = 1;
     for (Microservice microservice : microservices) {
       if (microservice.getName().equals(start)) {
-        result = iterateMicroservices(microservice,endpoint, hops, iterations);
+        result = iterateMicroservices(microservice, endpoint, hops, iterations);
         break;
       }
     }
     return result;
   }
-  private int iterateMicroservices(Microservice microservice,String endpoint, int maxHops, int iterations) {
+
+  private int iterateMicroservices(Microservice microservice, String endpoint, int maxHops,
+      int iterations) {
     int result = 0;
     if (iterations <= maxHops) {
       for (Connection connection : microservice.getConnections()) {

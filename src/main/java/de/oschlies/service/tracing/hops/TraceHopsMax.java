@@ -1,13 +1,17 @@
-package de.oschlies.service.tracing;
+package de.oschlies.service.tracing.hops;
 
+import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
 import de.oschlies.model.Connection;
 import de.oschlies.model.Microservice;
 import java.util.List;
 
-public class TraceHopsMax implements TraceHops{
+public class TraceHopsMax implements TraceHops {
+
   private List<Microservice> microservices;
 
-  public TraceHopsMax(List<Microservice> microservices){
+  @Inject
+  public TraceHopsMax(@Assisted List<Microservice> microservices) {
     this.microservices = microservices;
   }
 
@@ -17,13 +21,15 @@ public class TraceHopsMax implements TraceHops{
     int iterations = 1;
     for (Microservice microservice : microservices) {
       if (microservice.getName().equals(start)) {
-        result = iterateEndpoints(microservice,endpoint, hops, iterations);
+        result = iterateEndpoints(microservice, endpoint, hops, iterations);
         break;
       }
     }
     return result;
   }
-  private int iterateEndpoints(Microservice microservice,String endpoint, int maxHops, int iterations) {
+
+  private int iterateEndpoints(Microservice microservice, String endpoint, int maxHops,
+      int iterations) {
     int result = 0;
     if (iterations <= maxHops) {
       for (Connection connection : microservice.getConnections()) {
@@ -34,7 +40,7 @@ public class TraceHopsMax implements TraceHops{
             if (destMicroService.getName().equals(endpoint)) {
               result += 1;
             }
-            result += iterateEndpoints(destMicroService,endpoint, maxHops, pathIterations);
+            result += iterateEndpoints(destMicroService, endpoint, maxHops, pathIterations);
             break;
           }
         }

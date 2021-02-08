@@ -1,4 +1,4 @@
-package de.oschlies.service.tracing;
+package de.oschlies.service.tracing.hops;
 
 public interface TraceHops {
 

@@ -1,7 +1,7 @@
 import de.oschlies.model.Connection
 import de.oschlies.model.Microservice
-import de.oschlies.service.tracing.RouteLatencyCalculator
-import de.oschlies.service.tracing.RouteLatencyCalculatorImpl
+import de.oschlies.service.tracing.route.RouteLatencyCalculator
+import de.oschlies.service.tracing.route.RouteLatencyCalculatorImpl
 import spock.lang.Specification
 
 class RouteLatencyCalculatorSpec extends Specification{

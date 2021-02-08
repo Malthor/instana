@@ -1,5 +1,7 @@
-package de.oschlies.service.tracing;
+package de.oschlies.service.tracing.latency;
 
+import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
 import de.oschlies.model.Connection;
 import de.oschlies.model.Microservice;
 import java.util.List;
@@ -9,7 +11,8 @@ public class TraceMaxLatencyImpl implements TraceMaxLatency {
   private int maxLatency;
   private int tracesFound = 0;
 
-  public TraceMaxLatencyImpl(List<Microservice> microservices){
+  @Inject
+  public TraceMaxLatencyImpl(@Assisted List<Microservice> microservices){
     this.microservices = microservices;
   }
 

@@ -1,7 +1,7 @@
 import de.oschlies.model.Connection
 import de.oschlies.model.Microservice
-import de.oschlies.service.tracing.ShortestPath
-import de.oschlies.service.tracing.ShortestPathImpl
+import de.oschlies.service.tracing.path.ShortestPath
+import de.oschlies.service.tracing.path.ShortestPathImpl
 import spock.lang.Specification
 
 class ShortestPathSpec extends Specification {

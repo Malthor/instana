@@ -1,5 +1,7 @@
-package de.oschlies.service.tracing;
+package de.oschlies.service.tracing.path;
 
+import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
 import de.oschlies.model.Connection;
 import de.oschlies.model.Microservice;
 import java.util.ArrayList;
@@ -11,7 +13,8 @@ public class ShortestPathImpl implements ShortestPath {
   private List<Microservice> visitedMicroservices;
   private int currentFastest = 0;
 
-  public ShortestPathImpl(List<Microservice> microservices) {
+  @Inject
+  public ShortestPathImpl(@Assisted List<Microservice> microservices) {
     this.microservices = microservices;
   }
 
@@ -20,8 +23,8 @@ public class ShortestPathImpl implements ShortestPath {
     this.visitedMicroservices = new ArrayList<>();
     for (Microservice microservice : microservices) {
       if (microservice.getName().equals(start)) {
-          iterateEndpoints(microservice, endpoint, 0);
-          break;
+        iterateEndpoints(microservice, endpoint, 0);
+        break;
       }
     }
     return currentFastest;

@@ -1,4 +1,4 @@
-package de.oschlies.service.tracing;
+package de.oschlies.service.tracing.latency;
 
 public interface TraceMaxLatency {
 

@@ -1,5 +1,7 @@
-package de.oschlies.service.tracing;
+package de.oschlies.service.tracing.route;
 
+import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
 import de.oschlies.model.Connection;
 import de.oschlies.model.Microservice;
 import java.util.LinkedList;
@@ -8,7 +10,8 @@ import java.util.List;
 public class RouteLatencyCalculatorImpl implements RouteLatencyCalculator{
   private final List<Microservice> microservices;
 
-  public RouteLatencyCalculatorImpl(List<Microservice> microservices){
+  @Inject
+  public RouteLatencyCalculatorImpl(@Assisted List<Microservice> microservices){
     this.microservices = microservices;
   }
 
